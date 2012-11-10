@@ -2,7 +2,7 @@
 doctrine:
     dbal:
         ## SQLite
-        driver:   "pdo_dqlite"
+        driver:   "pdo_sqlite"
         path:     "%kernel.root_dir%/workshop.db"
 
         ## MySQL
