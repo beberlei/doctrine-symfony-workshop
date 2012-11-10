@@ -61,3 +61,10 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
+services:
+    doctrine_workshop.auto_route_loader:
+        class: Doctrine\WorkshopBundle\Routing\AutoRouteLoader
+        arguments:
+            - "@file_locator"
+        tags:
+            - { name: "routing.loader"}

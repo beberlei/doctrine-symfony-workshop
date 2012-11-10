@@ -7,5 +7,10 @@ _profiler:
     prefix:   /_profiler
 
 DoctrineWorkshopBundle:
-    resource: "@DoctrineWorkshopBundle/Resources/config/routing.yml"
+    resource: "@DoctrineWorkshopBundle/Controller/WorkshopController.php"
+    type: auto
+
+homepage:
+    pattern: "/"
+    defaults: { _controller: "DoctrineWorkshopBundle:Workshop:index" }
 
