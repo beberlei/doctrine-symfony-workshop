@@ -12,5 +12,5 @@ DoctrineWorkshopBundle:
 
 homepage:
     pattern: "/"
-    defaults: { _controller: "DoctrineWorkshopBundle:Workshop:index" }
+    defaults: { _controller: "DoctrineWorkshopBundle:Default:index" }
 
