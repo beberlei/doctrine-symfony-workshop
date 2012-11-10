@@ -3,3 +3,4 @@ app/cache
 app/logs
 web/bundles
 app/workshop.db
+build
