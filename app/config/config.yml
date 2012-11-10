@@ -40,6 +40,21 @@ framework:
     default_locale:  "en"
     trust_proxy_headers: false
     session:         ~
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+monolog:
+    handlers:
+        main:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        firephp:
+            type:  firephp
+            level: info
 
 # Twig Configuration
 twig:

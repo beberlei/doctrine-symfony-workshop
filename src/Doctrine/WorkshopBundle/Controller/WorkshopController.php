@@ -10,7 +10,9 @@ class WorkshopController extends Controller
 {
     public function indexAction()
     {
-        return 'Hello World!';
+        return $this->render('DoctrineWorkshopBundle:Workshop:index.html.twig', array(
+
+        ));
     }
 }
 
