@@ -14,3 +14,7 @@ homepage:
     pattern: "/"
     defaults: { _controller: "DoctrineWorkshopBundle:Default:index" }
 
+migrate:
+    pattern: "/migrate"
+    defaults: { _controller: "DoctrineWorkshopBundle:Default:migrate" }
+    requirements: { _method: 'POST' }
