@@ -13,9 +13,12 @@ If you don't have Composer installed, go to: http://getcomposer.org/download/
 Install Composer as described.
 
 If you have Composer installed on your machine, go into your working directory
-and call:
+and call depending on:
 
-    composer create-project beberlei/doctrine2-symfony2-workshop doctrine-ws
+    composer create-project beberlei/doctrine2-symfony2-workshop doctrine-ws --prefer-dist
+
+or 
+    php composer.phar create-project beberlei/doctrine2-symfony2-workshop doctrine-ws --prefer-dist
 
 This will create a new project with this application and download all the dependencies.
 
