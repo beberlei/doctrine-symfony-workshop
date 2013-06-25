@@ -15,7 +15,13 @@ class DefaultController extends Controller
 
         foreach ($reflection->getMethods() as $method) {
             if (substr($method->getName(), -6) == "Action") {
-                $routeNames[] = strtolower(str_replace("Action", "", $method->getName()));
+                $routeName = strtolower(str_replace("Action", "", $method->getName()));
+
+                if (in_array($routeName, array('edit', 'show'))) {
+                    continue;
+                }
+
+                $routeNames[] = $routeName;
             }
         }
 
