@@ -1,0 +1,23 @@
+{% extends "DoctrineWorkshopBundle::layout.html.twig" %}
+
+{% block content %}
+<h1>Vehicles</h1>
+
+<table cellpadding="4">
+    <tr>
+        <th>Offer</th>
+        <th>Price</th>
+        <th>Options</th>
+    </tr>
+{% for vehicle in vehicles %}
+    <tr>
+        <td>{{ vehicle.offer }}</td>
+        <td>{{ vehicle.price }} &euro;</td>
+        <td>
+            <a href="{{ path('show', {'id': vehicle.id}) }}">Show</a>
+            <a href="{{ path('edit', {'id': vehicle.id}) }}">Edit</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

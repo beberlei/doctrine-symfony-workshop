@@ -11,15 +11,53 @@ use Doctrine\WorkshopBundle\Form\Type\VehicleType;
 
 class WorkshopController extends Controller
 {
-    public function indexAction()
+    public function listAction()
     {
-        return $this->render('DoctrineWorkshopBundle:Workshop:index.html.twig', array());
+        $vehicles = $this->getEntityManager()
+                         ->getRepository('Doctrine\WorkshopBundle\Entity\Vehicle')
+                         ->findBy(array(), array('id' => 'DESC'), 20);
+
+        return $this->render('DoctrineWorkshopBundle:Workshop:list.html.twig', array(
+            'vehicles' => $vehicles,
+        ));
+    }
+
+    public function showAction(Request $request)
+    {
+        $vehicle = $this->findVehicle($request);
+
+        return $this->render('DoctrineWorkshopBundle:Workshop:show.html.twig', array(
+            'vehicle' => $vehicle,
+        ));
     }
 
     public function createAction(Request $request)
     {
         $vehicle = new Vehicle();
 
+        return $this->handleVehicleForm($vehicle, $request);
+    }
+
+    protected function findVehicle(Request $request)
+    {
+        $vehicle = $this->getEntityManager()->find('Doctrine\WorkshopBundle\Entity\Vehicle', $request->query->get('id'));
+
+        if (!$vehicle) {
+            throw $this->createNotFoundHttpException();
+        }
+
+        return $vehicle;
+    }
+
+    public function editAction(Request $request)
+    {
+        $vehicle = $this->findVehicle($request);
+
+        return $this->handleVehicleForm($vehicle, $request);
+    }
+
+    protected function handleVehicleForm($vehicle, Request $request)
+    {
         $form = $this->createForm(new VehicleType(), $vehicle);
 
         if ($request->getMethod() === 'POST') {
