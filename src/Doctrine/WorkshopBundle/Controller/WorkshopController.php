@@ -68,7 +68,7 @@ class WorkshopController extends Controller
                 $entityManager->persist($vehicle);
                 $entityManager->flush();
 
-                return $this->redirect($this->generateUrl('index'));
+                return $this->redirect($this->generateUrl('list'));
             }
         }
 
