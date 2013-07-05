@@ -84,6 +84,24 @@ class WorkshopController extends Controller
     {
         return $this->container->get('doctrine.orm.default_entity_manager');
     }
+
+    public function batchAction()
+    {
+        $em = $this->getEntityManager();
+
+        for ($i = 0; $i < 100; $i++) {
+            $vehicle = new Vehicle();
+            $vehicle->setPrice(100 + $i * 1000);
+            $vehicle->setOffer("AUDI A" . $i);
+            $vehicle->setUntil(new \DateTime("+4 day"));
+
+            $em->persist($vehicle);
+        }
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('list'));
+    }
 }
 
 

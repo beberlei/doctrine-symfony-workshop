@@ -4,4 +4,6 @@
 <h1>Vehicle: {{ vehicle.offer }}</h1>
 
 <p>Price: {{ vehicle.price}} &euro;</p>
+
+<p>Offer is valid until {{ vehicle.until|date('d.m.Y, H:i') }}</p>
 {% endblock %}

@@ -17,6 +17,9 @@ class Vehicle
     /** @ORM\Column(type="integer") **/
     protected $price;
 
+    /** @ORM\Column(type="datetime") */
+    protected $until;
+
     public function getId()
     {
         return $this->id;
@@ -40,6 +43,16 @@ class Vehicle
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    public function setUntil(\DateTime $until)
+    {
+        $this->until = $until;
+    }
+
+    public function getUntil()
+    {
+        return $this->until;
     }
 }
 
