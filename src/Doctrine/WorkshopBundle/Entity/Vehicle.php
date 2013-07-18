@@ -20,6 +20,16 @@ class Vehicle
     /** @ORM\Column(type="datetime") */
     protected $until;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Brand")
+     */
+    protected $brand;
+
+    public function __construct()
+    {
+        $this->until = new \DateTime("+2 days");
+    }
+
     public function getId()
     {
         return $this->id;
@@ -53,6 +63,26 @@ class Vehicle
     public function getUntil()
     {
         return $this->until;
+    }
+    
+    /**
+     * Get brand.
+     *
+     * @return brand.
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+    
+    /**
+     * Set brand.
+     *
+     * @param brand the value to set.
+     */
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
     }
 }
 

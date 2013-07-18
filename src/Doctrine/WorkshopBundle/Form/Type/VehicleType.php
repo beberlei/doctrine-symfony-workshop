@@ -11,6 +11,11 @@ class VehicleType extends AbstractType
     {
         $builder->add('offer', 'text');
         $builder->add('price', 'integer');
+        $builder->add('brand', 'entity', array(
+            'class' => 'Doctrine\WorkshopBundle\Entity\Brand',
+            'property' => 'name',
+            'expanded' => true
+        ));
     }
 
     public function getName()

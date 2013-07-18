@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 use Doctrine\WorkshopBundle\Entity\Vehicle;
+use Doctrine\WorkshopBundle\Entity\Brand;
 use Doctrine\WorkshopBundle\Form\Type\VehicleType;
 
 class WorkshopController extends Controller
@@ -89,13 +90,16 @@ class WorkshopController extends Controller
     {
         $em = $this->getEntityManager();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10; $i++) {
+            $brand = new Brand("Foo$i");
             $vehicle = new Vehicle();
             $vehicle->setPrice(100 + $i * 1000);
             $vehicle->setOffer("AUDI A" . $i);
             $vehicle->setUntil(new \DateTime("+4 day"));
+            $vehicle->setBrand($brand);
 
             $em->persist($vehicle);
+            $em->persist($brand);
         }
 
         $em->flush();
