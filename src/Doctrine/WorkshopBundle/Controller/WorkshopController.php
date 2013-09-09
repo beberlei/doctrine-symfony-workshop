@@ -56,6 +56,16 @@ class WorkshopController extends Controller
         return $this->handleVehicleForm($vehicle, $request);
     }
 
+    protected function gotoVehicle(Vehicle $vehicle)
+    {
+        return $this->redirect($this->generateUrl('show', array('id' => $vehicle->getId())));
+    }
+
+    protected function gotoList()
+    {
+        return $this->redirect($this->generateUrl('list'));
+    }
+
     protected function handleVehicleForm($vehicle, Request $request)
     {
         $form = $this->createForm(new VehicleType(), $vehicle);
@@ -68,7 +78,7 @@ class WorkshopController extends Controller
                 $entityManager->persist($vehicle);
                 $entityManager->flush();
 
-                return $this->redirect($this->generateUrl('list'));
+                return $this->gotoList();
             }
         }
 
