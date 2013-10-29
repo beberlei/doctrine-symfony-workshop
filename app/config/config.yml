@@ -1,18 +1,22 @@
+services:
+    language_filter:
+        class: Doctrine\WorkshopBundle\Controller\LanguageFilter
+
 # Doctrine Configuration
 doctrine:
     dbal:
         ## SQLite
-        driver:   "pdo_sqlite"
-        path:     "%kernel.root_dir%/workshop.db"
+        #driver:   "pdo_sqlite"
+        #path:     "%kernel.root_dir%/workshop.db"
 
         ## MySQL
-        #driver:   "pdo_mysql"
-        #host:     "localhost"
-        #port:     "3306"
-        #dbname:   "dcworkshop"
-        #user:     "root"
-        #password: ""
-        #charset:  UTF8
+        driver:   "pdo_mysql"
+        host:     "localhost"
+        port:     "3306"
+        dbname:   "dcworkshop2"
+        user:     "root"
+        password: ""
+        charset:  UTF8
 
         ## PostgreSQL
         #driver:   "pdo_pgsql"
@@ -27,6 +31,11 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+        #filters:
+        #    language:
+        #        class: Doctrine\WorkshopBundle\Controller\LanguageFilter
+        #        enabled: true
+
 # Framework
 framework:
     secret:          "pufahShae8Aetheev2ie"
@@ -38,7 +47,6 @@ framework:
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] }
     default_locale:  "en"
-    trust_proxy_headers: false
     session:         ~
     profiler: { only_exceptions: false }
 
