@@ -11,7 +11,7 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
-        "doctrine/orm": "~2.3",
+        "doctrine/orm": "~2.4",
         "doctrine/doctrine-bundle": "@stable",
         "twig/extensions": "1.0.*",
         "symfony/monolog-bundle": "@stable",
