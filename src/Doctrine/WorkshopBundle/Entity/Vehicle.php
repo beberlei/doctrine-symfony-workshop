@@ -3,19 +3,33 @@
 namespace Doctrine\WorkshopBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * @ORM\Entity
- * @ORM\Table("vehicle")
- */
 class Vehicle
 {
-    /** @ORM\Column(type="integer") @ORM\Id @ORM\GeneratedValue **/
     protected $id;
-    /** @ORM\Column(type="string") **/
     protected $offer;
-    /** @ORM\Column(type="integer") **/
     protected $price;
+
+    public $zulassungsdatum;
+    public $brand;
+    public $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
+
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image)
+    {
+        $this->images[] = $image;
+        $image->setVehicle($this);
+    }
 
     public function getId()
     {

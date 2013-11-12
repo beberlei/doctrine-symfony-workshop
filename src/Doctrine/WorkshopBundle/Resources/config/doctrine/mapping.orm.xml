@@ -1,0 +1,42 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                   https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Doctrine\WorkshopBundle\Entity\Vehicle" table="vehicle">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="offer" type="string" />
+        <field name="price" type="integer" />
+        <field name="zulassungsdatum" type="datetime" />
+
+        <many-to-one field="brand" target-entity="Doctrine\WorkshopBundle\Entity\Brand" />
+
+        <one-to-many field="images"
+            target-entity="Doctrine\WorkshopBundle\Entity\Image" mapped-by="vehicle"
+            index-by="id"
+            >
+            <order-by name="created" direction="DESC" />
+            <!-- @ORM\OrderBy(name="created", direction="DESC") -->
+        </one-to-many>
+    </entity>
+
+    <entity name="Doctrine\WorkshopBundle\Entity\Brand" table="brand">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="name" type="string" />
+    </entity>
+
+    <entity name="Doctrine\WorkshopBundle\Entity\Image" table="image">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="data" type="text" />
+
+        <many-to-one field="vehicle"
+            target-entity="Doctrine\WorkshopBundle\Entity\Vehicle" inversed-by="images" />
+    </entity>
+
+</doctrine-mapping>

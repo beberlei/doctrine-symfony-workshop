@@ -7,12 +7,18 @@
     <tr>
         <th>Offer</th>
         <th>Price</th>
+        <th>Brand</th>
         <th>Options</th>
     </tr>
 {% for vehicle in vehicles %}
     <tr>
         <td>{{ vehicle.offer }}</td>
         <td>{{ vehicle.price }} &euro;</td>
+        <td>
+            {% if vehicle.brand %}
+            {{ vehicle.brand.name }}
+            {% endif %}
+        </td>
         <td>
             <a href="{{ path('show', {'id': vehicle.id}) }}">Show</a>
             <a href="{{ path('edit', {'id': vehicle.id}) }}">Edit</a>

@@ -1,7 +1,25 @@
 {% extends "DoctrineWorkshopBundle::layout.html.twig" %}
 
 {% block content %}
-<h1>Vehicle: {{ vehicle.offer }}</h1>
+<h1>Vehicle: {{ vehicle.offer }} ({{ vehicle.id }})</h1>
 
-<p>Price: {{ vehicle.price}} &euro;</p>
+<p><a href="{{ path('update', {'id': vehicle.id}) }}">Double the price</a></p>
+
+<p>Price: {{ vehicle.price }} &euro;</p>
+
+{% if vehicle.zulassungsdatum %}
+<p>Zulassungsdatum:{# {{ vehicle.zulassungsdatum }}#}</p>
+{% endif %}
+
+{% if vehicle.brand %}
+<p>Brand: {{ vehicle.brand.name }}</p>
+{% endif %}
+
+<h4>Images ({{ vehicle.images|length }})</h4>
+{% for image in vehicle.images %}
+<p>
+    <pre>{{ image.data }}</pre>
+</p>
+{% endfor %}
+
 {% endblock %}
